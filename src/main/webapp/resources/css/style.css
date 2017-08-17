@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #dfdfdf;
+}
+
+.grid {
+    display: flex;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 385px;
+    height: 385px;
+    flex-wrap: wrap;
+    background: #d3d3d3;
+}
+
+.grid .space {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 125px;
+    height: 125px;
+    background: #dfdfdf;
+}
+
+/*  X   */
+
+.x:after {
+    content: '\2715';
+    font-size: 64px;
+}
+
+.o:after {
+    content: '\25EF';
+    font-size: 54px;
+}
