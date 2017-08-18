@@ -1,22 +1,29 @@
 package com.stoyanovdmitry.controller;
 
-import com.stoyanovdmitry.game.Game;
+import com.stoyanovdmitry.util.GameUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 @Controller
 public class MainController {
 
-	private Game game;
+	private GameUtil gameUtil;
+
+	@Autowired
+	public MainController(GameUtil gameUtil) {
+		this.gameUtil = gameUtil;
+	}
 
 	@RequestMapping("/")
 	public String startGame() {
-		game = new Game();
+		String gameID = gameUtil.addNewGame();
 
-		return "game";
+		return "redirect:/?game=" + gameID;
 	}
 
 	@RequestMapping(value = "/set",
@@ -24,8 +31,9 @@ public class MainController {
 	public @ResponseBody int[] setToPosition(@RequestParam("position") int position,
 	                                         @RequestParam("id") int id) {
 
-		game.step(position, id);
+//		game.step(position, id);
 
-		return game.getGrid();
+//		return game.getGrid();
+		return null;
 	}
 }
