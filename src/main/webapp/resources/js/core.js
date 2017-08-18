@@ -1,19 +1,47 @@
-var player = Math.round(Math.random() + 1);   //random choosing of player who will start
+var pathname = window.location.pathname;    //relative path of URL
+
+// player id
+var player;
+setPlayer();
 
 var grid = new Array(9);   //table array
 
-function set(spaceNumber) {
+function step(spaceNumber) {
 
     if (grid[spaceNumber] !== undefined) return false;
-
     requestToServer(spaceNumber, player);
+}
+
+function setPlayer() {
+
+    $.ajax({
+        type: 'GET',
+        url: pathname,
+        data: 'addPlayer',
+        success: function (response) {
+            setPlayerID(response);
+        },
+        error: function (err) {
+            alert('ERROR' + "\n" + err.message)
+        }
+    });
+
+    function setPlayerID(playerID) {
+
+        player = playerID;
+
+        if (playerID !== 0)
+            $('#playerID').text('Your are Player ' + player);
+        else
+            $('#playerID').text('Your are watcher');
+    }
 }
 
 function requestToServer(position, id) {
 
     $.ajax({
         type: 'GET',
-        url: '/set',
+        url: pathname + '/set',
         data: {
             position: position,
             id: id
@@ -22,7 +50,7 @@ function requestToServer(position, id) {
             setClasses(response)
         },
         error: function (err) {
-            alert(err.message)
+            alert('ERROR' + "\n" + err.message)
         }
     });
 }
@@ -36,11 +64,9 @@ function setClasses(responseGrid) {
         if (responseGrid[i] === 1) {
             grid[i] = 1;
             figure.addClass('x');
-            player++;
         } else if (responseGrid[i] === 2) {
             grid[i] = 2;
             figure.addClass('o');
-            player--;
         }
     }
 }
