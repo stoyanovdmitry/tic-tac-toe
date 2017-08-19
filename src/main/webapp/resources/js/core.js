@@ -11,6 +11,15 @@ var playerStep = 1; //player who's due next step
 var isGameOver = false;
 
 
+function setText() {
+    if (playerStep === player)
+        $('#playerID').text("Your turn");
+    else if (playerStep !== player && player !== 0)
+        $('#playerID').text("Wait while your opponent walks");
+    else
+        $('#playerID').text("You are watcher");
+}
+
 function step(spaceNumber) {
 
     // alert(player + ' - ' + playerStep)
@@ -18,6 +27,8 @@ function step(spaceNumber) {
 
     if (playerStep === 1) playerStep++;
     else if (playerStep === 2) playerStep--;
+
+    setText();
 
     requestToServer(spaceNumber, player);
 }
@@ -45,7 +56,16 @@ function setClasses(responseGrid) {
     }
 }
 
+function setGameOverText() {
+    if (playerStep - 2 === player)
+        $('#playerID').text('You Win!');
+    else if (playerStep - 2 !== player && player !== 0)
+        $('#playerID').text('You Lose');
+}
+
 function setGameOverClasses(row) {
+
+    setGameOverText();
 
     for (var i = 0; i < row.length; i++) {
         $('#' + row[i]).children().addClass('red');
@@ -70,11 +90,7 @@ function setPlayer() {
     function setPlayerID(playerID) {
 
         player = playerID;
-
-        if (playerID !== 0)
-            $('#playerID').text('You are Player ' + player);
-        else
-            $('#playerID').text('You are watcher');
+        // setText();
     }
 }
 
@@ -123,6 +139,7 @@ function checkGameOver() {
             success: function (response) {
                 setClasses(response.grid);
                 setPlayerStep(response.playerStep);
+                setText();
             },
             complete: function () {
                 // Schedule the next request when the current one's complete
