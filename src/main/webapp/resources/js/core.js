@@ -126,7 +126,7 @@ function checkGameOver() {
             },
             complete: function () {
                 // Schedule the next request when the current one's complete
-                setTimeout(checkGame, 1000);
+                setTimeout(checkGame, 250);
             },
             error: function (err) {
                 alert('ERROR checkGame' + "\n" + err.message);
