@@ -1,5 +1,7 @@
 package com.stoyanovdmitry.controller;
 
+import com.stoyanovdmitry.game.Game;
+import com.stoyanovdmitry.response.CheckGameResponse;
 import com.stoyanovdmitry.util.GameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,5 +33,16 @@ public class GameController {
 	                                         @RequestParam("id") int playerID) {
 
 		return gameUtil.stepGameById(gameID, position, playerID);
+	}
+
+	@RequestMapping(params = "checkGame",
+			method = RequestMethod.GET)
+	public @ResponseBody CheckGameResponse checkGame(@PathVariable String gameID) {
+
+		Game game = gameUtil.getGameById(gameID);
+		int playerStep = game.getNextPlayer();
+		int[] grid = game.getGrid();
+
+		return new CheckGameResponse(playerStep, grid);
 	}
 }

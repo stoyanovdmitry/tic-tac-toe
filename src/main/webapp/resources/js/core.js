@@ -6,9 +6,15 @@ setPlayer();
 
 var grid = new Array(9);   //table array
 
+var playerStep = 1; //player who's due next step
+
 function step(spaceNumber) {
 
-    if (grid[spaceNumber] !== undefined) return false;
+    if (grid[spaceNumber] !== undefined || playerStep !== player) return false;
+
+    if (playerStep === 1) playerStep++;
+    else if (playerStep === 2) playerStep--;
+
     requestToServer(spaceNumber, player);
 }
 
@@ -22,7 +28,7 @@ function setPlayer() {
             setPlayerID(response);
         },
         error: function (err) {
-            alert('ERROR' + "\n" + err.message)
+            alert('ERROR' + "\n" + err.message);
         }
     });
 
@@ -31,9 +37,9 @@ function setPlayer() {
         player = playerID;
 
         if (playerID !== 0)
-            $('#playerID').text('Your are Player ' + player);
+            $('#playerID').text('You are Player ' + player);
         else
-            $('#playerID').text('Your are watcher');
+            $('#playerID').text('You are watcher');
     }
 }
 
@@ -50,7 +56,7 @@ function requestToServer(position, id) {
             setClasses(response)
         },
         error: function (err) {
-            alert('ERROR' + "\n" + err.message)
+            alert('ERROR' + "\n" + err.message);
         }
     });
 }
@@ -70,3 +76,26 @@ function setClasses(responseGrid) {
         }
     }
 }
+
+function setPlayerStep(player) {
+    playerStep = player;
+}
+
+(function checkGame() {
+    $.ajax({
+        type: 'GET',
+        url: pathname,
+        data: 'checkGame',
+        success: function (response) {
+            setClasses(response.grid);
+            setPlayerStep(response.playerStep);
+        },
+        complete: function () {
+            // Schedule the next request when the current one's complete
+            setTimeout(checkGame, 1000);
+        },
+        error: function (err) {
+            alert('ERROR' + "\n" + err.message);
+        }
+    });
+})();

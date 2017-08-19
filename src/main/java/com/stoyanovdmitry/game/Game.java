@@ -8,7 +8,7 @@ public class Game {
 	private List<Integer> players;
 	private int[] grid;
 
-	private int lastPlayer;
+	private int nextPlayer = 1; //todo change that
 
 	public Game() {
 		grid = new int[9];
@@ -20,7 +20,11 @@ public class Game {
 		if (grid[position] == 0)
 			grid[position] = player;
 
-		lastPlayer = player;
+		if(player == 1)
+			nextPlayer = 2;
+		else if(player == 2)
+			nextPlayer = 1;
+
 		return grid;
 	}
 
@@ -55,11 +59,11 @@ public class Game {
 		this.players = players;
 	}
 
-	public int getLastPlayer() {
-		return lastPlayer;
+	public int getNextPlayer() {
+		return nextPlayer;
 	}
 
-	public void setLastPlayer(int lastPlayer) {
-		this.lastPlayer = lastPlayer;
+	public void setNextPlayer(int nextPlayer) {
+		this.nextPlayer = nextPlayer;
 	}
 }

@@ -11,6 +11,7 @@ public class GameUtil {
 	@Resource
 	private Map<String, Game> games;
 
+	@SuppressWarnings("deprecation")
 	public String addNewGame() {
 
 		String gameID = RandomStringUtils.randomAlphanumeric(5);
@@ -21,18 +22,14 @@ public class GameUtil {
 	}
 
 	public int addPlayerToGame(String gameID) {
-
-		Game game = getGameById(gameID);
-		return game.addPlayer();
+		return getGameById(gameID).addPlayer();
 	}
 
 	public int[] stepGameById(String gameID, int pos, int playerID) {
-
 		return getGameById(gameID).step(pos, playerID);
 	}
 
-	private Game getGameById(String gameID) {
-
+	public Game getGameById(String gameID) {
 		return games.get(gameID);
 	}
 }
