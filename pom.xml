@@ -36,23 +36,23 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-aop</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>spring-aop</artifactId>-->
+			<!--<version>${spring.version}</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>spring-orm</artifactId>-->
+			<!--<version>${spring.version}</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework</groupId>-->
+			<!--<artifactId>spring-tx</artifactId>-->
+			<!--<version>${spring.version}</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -66,51 +66,50 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-			<version>4.2.3.RELEASE</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-core</artifactId>-->
+			<!--<version>4.2.3.RELEASE</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>4.2.3.RELEASE</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-web</artifactId>-->
+			<!--<version>4.2.3.RELEASE</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-config</artifactId>
-			<version>4.2.3.RELEASE</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-config</artifactId>-->
+			<!--<version>4.2.3.RELEASE</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>4.2.2.RELEASE</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.security</groupId>-->
+			<!--<artifactId>spring-security-taglibs</artifactId>-->
+			<!--<version>4.2.2.RELEASE</version>-->
+		<!--</dependency>-->
 
 
 		<!--    hibernate   -->
 
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>5.2.10.Final</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.hibernate</groupId>-->
+			<!--<artifactId>hibernate-core</artifactId>-->
+			<!--<version>5.2.10.Final</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.4.1.Final</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.hibernate</groupId>-->
+			<!--<artifactId>hibernate-validator</artifactId>-->
+			<!--<version>5.4.1.Final</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.hibernate.common</groupId>
-			<artifactId>hibernate-commons-annotations</artifactId>
-			<version>5.0.1.Final</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.hibernate.common</groupId>-->
+			<!--<artifactId>hibernate-commons-annotations</artifactId>-->
+			<!--<version>5.0.1.Final</version>-->
+		<!--</dependency>-->
 
 		<!--<dependency>-->
 		<!--<groupId>org.hibernate</groupId>-->
@@ -120,23 +119,23 @@
 
 		<!--    other   -->
 
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.10</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.aspectj</groupId>-->
+			<!--<artifactId>aspectjweaver</artifactId>-->
+			<!--<version>1.8.10</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.6</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>mysql</groupId>-->
+			<!--<artifactId>mysql-connector-java</artifactId>-->
+			<!--<version>6.0.6</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>javax.transaction</groupId>
-			<artifactId>jta</artifactId>
-			<version>1.1</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>javax.transaction</groupId>-->
+			<!--<artifactId>jta</artifactId>-->
+			<!--<version>1.1</version>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>junit</groupId>
@@ -145,12 +144,12 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.1.0</version>
-			<scope>provided</scope>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>javax.servlet</groupId>-->
+			<!--<artifactId>javax.servlet-api</artifactId>-->
+			<!--<version>3.1.0</version>-->
+			<!--<scope>provided</scope>-->
+		<!--</dependency>-->
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -158,17 +157,17 @@
 			<version>1.2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>1.1.0.Final</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>javax.validation</groupId>-->
+			<!--<artifactId>validation-api</artifactId>-->
+			<!--<version>1.1.0.Final</version>-->
+		<!--</dependency>-->
 
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.el</artifactId>
-			<version>3.0.1-b08</version>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.glassfish</groupId>-->
+			<!--<artifactId>javax.el</artifactId>-->
+			<!--<version>3.0.1-b08</version>-->
+		<!--</dependency>-->
 
 		<!-- Jackson JSON Mapper -->
 		<dependency>
@@ -183,8 +182,6 @@
 			<artifactId>commons-lang3</artifactId>
 			<version>3.6</version>
 		</dependency>
-
-
 	</dependencies>
 
 </project>
