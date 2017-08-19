@@ -26,6 +26,12 @@ body {
     background: #dfdfdf;
 }
 
+.grid .space .figure {
+    color: #3d3d3d;
+}
+.grid .space .figure.red {
+    color: #bf4141;
+}
 /*  X   */
 
 .x:after {

@@ -2,6 +2,7 @@ package com.stoyanovdmitry.controller;
 
 import com.stoyanovdmitry.game.Game;
 import com.stoyanovdmitry.response.CheckGameResponse;
+import com.stoyanovdmitry.response.CheckGameOverResponse;
 import com.stoyanovdmitry.util.GameUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,5 +45,15 @@ public class GameController {
 		int[] grid = game.getGrid();
 
 		return new CheckGameResponse(playerStep, grid);
+	}
+
+	@RequestMapping(params = "checkGameOver",
+			method = RequestMethod.GET)
+	public @ResponseBody CheckGameOverResponse checkGameOver(@PathVariable String gameID) {
+
+		Game game = gameUtil.getGameById(gameID);
+		int[] winningRow = game.checkGameOver();
+
+		return new CheckGameOverResponse(winningRow);
 	}
 }

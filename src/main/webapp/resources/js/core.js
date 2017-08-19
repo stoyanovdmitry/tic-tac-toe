@@ -8,8 +8,12 @@ var grid = new Array(9);   //table array
 
 var playerStep = 1; //player who's due next step
 
+var isGameOver = false;
+
+
 function step(spaceNumber) {
 
+    // alert(player + ' - ' + playerStep)
     if (grid[spaceNumber] !== undefined || playerStep !== player) return false;
 
     if (playerStep === 1) playerStep++;
@@ -17,6 +21,37 @@ function step(spaceNumber) {
 
     requestToServer(spaceNumber, player);
 }
+
+function setPlayerStep(player) {
+    playerStep = player;
+    if (player === 3 || player === 4) {
+        checkGameOver();
+    }
+}
+
+function setClasses(responseGrid) {
+
+    for (var i = 0; i < grid.length; i++) {
+
+        var figure = $('#' + i).children();
+
+        if (responseGrid[i] === 1) {
+            grid[i] = 1;
+            figure.addClass('x');
+        } else if (responseGrid[i] === 2) {
+            grid[i] = 2;
+            figure.addClass('o');
+        }
+    }
+}
+
+function setGameOverClasses(row) {
+
+    for (var i = 0; i < row.length; i++) {
+        $('#' + row[i]).children().addClass('red');
+    }
+}
+
 
 function setPlayer() {
 
@@ -61,41 +96,40 @@ function requestToServer(position, id) {
     });
 }
 
-function setClasses(responseGrid) {
 
-    for (var i = 0; i < grid.length; i++) {
+function checkGameOver() {
 
-        var figure = $('#' + i).children();
+    isGameOver = true;
 
-        if (responseGrid[i] === 1) {
-            grid[i] = 1;
-            figure.addClass('x');
-        } else if (responseGrid[i] === 2) {
-            grid[i] = 2;
-            figure.addClass('o');
-        }
-    }
-}
-
-function setPlayerStep(player) {
-    playerStep = player;
-}
-
-(function checkGame() {
     $.ajax({
         type: 'GET',
         url: pathname,
-        data: 'checkGame',
+        data: 'checkGameOver',
         success: function (response) {
-            setClasses(response.grid);
-            setPlayerStep(response.playerStep);
-        },
-        complete: function () {
-            // Schedule the next request when the current one's complete
-            setTimeout(checkGame, 1000);
+            setGameOverClasses(response.winningRow);
         },
         error: function (err) {
             alert('ERROR' + "\n" + err.message);
         }
     });
+}
+
+(function checkGame() {
+    if (!isGameOver)
+        $.ajax({
+            type: 'GET',
+            url: pathname,
+            data: 'checkGame',
+            success: function (response) {
+                setClasses(response.grid);
+                setPlayerStep(response.playerStep);
+            },
+            complete: function () {
+                // Schedule the next request when the current one's complete
+                setTimeout(checkGame, 1000);
+            },
+            error: function (err) {
+                alert('ERROR checkGame' + "\n" + err.message);
+            }
+        });
 })();
