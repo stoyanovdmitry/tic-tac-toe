@@ -37,7 +37,7 @@
     </div>
 </div>
 <span id="playerID"></span>
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.min.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/core.js"/>"></script>
 </body>
 </html>

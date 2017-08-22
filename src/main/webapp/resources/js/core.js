@@ -10,6 +10,8 @@ var playerStep = 1; //player who's due next step
 
 var isGameOver = false;
 
+checkGame();
+
 
 function setText() {
     if (playerStep === player)
@@ -115,8 +117,6 @@ function requestToServer(position, id) {
 
 function checkGameOver() {
 
-    isGameOver = true;
-
     $.ajax({
         type: 'GET',
         url: pathname,
@@ -125,12 +125,14 @@ function checkGameOver() {
             setGameOverClasses(response.winningRow);
         },
         error: function (err) {
-            alert('ERROR' + "\n" + err.message);
+            alert('ERROR checkGameOver' + "\n" + err.message);
         }
     });
+    checkGame();
+    isGameOver = true;
 }
 
-(function checkGame() {
+function checkGame() {
     if (!isGameOver)
         $.ajax({
             type: 'GET',
@@ -140,13 +142,23 @@ function checkGameOver() {
                 setClasses(response.grid);
                 setPlayerStep(response.playerStep);
                 setText();
+                setTimeout(checkGame, 250);
             },
             complete: function () {
                 // Schedule the next request when the current one's complete
-                setTimeout(checkGame, 250);
             },
             error: function (err) {
                 alert('ERROR checkGame' + "\n" + err.message);
             }
         });
-})();
+}
+
+$(window).on("unload", function () {
+    if (player !== 0)
+        $.ajax({
+            type: 'GET',
+            url: pathname,
+            data: 'playerLeft',
+            async: false
+        })
+});
