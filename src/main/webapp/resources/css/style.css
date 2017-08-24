@@ -35,13 +35,26 @@ body {
     color: #3d3d3d;
 }
 .grid .space .figure.red {
-    color: #bf4141;
+    color: #b61f1f;
 }
 
 #playerID {
     margin-top: 25px;
     font-family: sans-serif;
     color: #3d3d3d;
+}
+
+.desc {
+    margin-top: 45px;
+    font: 11px sans-serif;
+    max-width: 450px;
+    color: #3d3d3d;
+}
+.desc a {
+    color: #3d3d3d;
+}
+.desc a:hover {
+    color: #b61f1f;
 }
 
 /*  X   */

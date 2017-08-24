@@ -37,6 +37,13 @@
     </div>
 </div>
 <span id="playerID"></span>
+<p class="desc">
+    You can share current link with friend or wait while random player connect to your game.
+    You can <a href="<c:url value="/start"/>">restart</a> game if you want
+    (WARNING! In current app version the 'restart' button will start new game,
+    but doesn't restart current game, so you will need to find new opponent)
+</p>
+
 <script type="text/javascript" src="<c:url value="/resources/js/jquery-3.2.1.min.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/core.js"/>"></script>
 </body>
