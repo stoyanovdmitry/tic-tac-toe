@@ -58,17 +58,36 @@ body {
 }
 
 /*  X   */
-
-.x:after {
-    content: '\2715';
-    font-size: 64px;
+.figure {
+    width: 0;
+    height: 0;
+    /*transition: width .4s ease-in-out;*/
+    transition: all .4s cubic-bezier(0.19, 1.1, 0.79, 1.4);
 }
 
-.o:after {
-    content: '\25EF';
-    font-size: 54px;
+.x {
+    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' fill='#b61f1f'/></svg>")  no-repeat;;*/
+    -webkit-mask: url(/resources/svg/x.svg) no-repeat 50% 50%;
+    mask: url(/resources/svg/x.svg) no-repeat 50% 50%;
+    background-color: #3d3d3d;
+
+    width: 64px;
+    height: 64px;
 }
 
+.o {
+    -webkit-mask: url(/resources/svg/o.svg) no-repeat 50% 50%;
+    mask: url(/resources/svg/o.svg) no-repeat 50% 50%;
+    background-color: #3d3d3d;
+
+    width: 69px;
+    height: 69px;
+}
+.red {
+    background-color: #b61f1f;
+
+    animation: pulse;
+}
 
 /*home*/
 
