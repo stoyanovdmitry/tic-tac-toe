@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class Game {
 
 	private List<Integer> players;
+	private int playersLeft;
 	private int[] grid;
 
 	private int nextPlayer = 1; //todo change that
@@ -62,22 +63,30 @@ public class Game {
 
 	public int[] checkGameOver() {
 
-		for (int[] WIN_SET : WIN_SETS) {
+		first:for (int[] WIN_SET : WIN_SETS) {
 
 			if (grid[WIN_SET[0]] == grid[WIN_SET[1]]
 					&& grid[WIN_SET[1]] == grid[WIN_SET[2]]) {
 
 				for (int WIN_ROW : WIN_SET) { //return if winning rows is empty (0)
 					if (grid[WIN_ROW] == 0)
-						return null;
+						continue first;
 				}
 
-				nextPlayer = grid[WIN_SET[0]] + 2;  //if winner is player 1, than nextPlayer == 3
+				nextPlayer = grid[WIN_SET[0]] + 2;  //if winner is player 1||2, than nextPlayer == 3||4
 				return WIN_SET;
 			}
 		}
 
 		return null;
+	}
+
+	public void incrementPlayersLeft() {
+		playersLeft++;
+	}
+
+	public boolean isEmpty() {
+		return players.size() <= 1;
 	}
 
 	public int[] getGrid() {
@@ -102,5 +111,13 @@ public class Game {
 
 	public void setNextPlayer(int nextPlayer) {
 		this.nextPlayer = nextPlayer;
+	}
+
+	public int getPlayersLeft() {
+		return playersLeft;
+	}
+
+	public void setPlayersLeft(int playersLeft) {
+		this.playersLeft = playersLeft;
 	}
 }

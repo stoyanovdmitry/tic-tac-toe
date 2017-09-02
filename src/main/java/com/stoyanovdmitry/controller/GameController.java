@@ -16,7 +16,9 @@ public class GameController {
 	private GameUtil gameUtil;
 
 	@RequestMapping
-	public String gameController() {
+	public String gameController(@PathVariable String gameID) {
+		if (gameUtil.getGameById(gameID) == null)
+			return "redirect:/?gameNotFound";
 		return "game";
 	}
 
@@ -25,6 +27,13 @@ public class GameController {
 	public @ResponseBody int registerPlayerInGame(@PathVariable String gameID) {
 
 		return gameUtil.addPlayerToGame(gameID);
+	}
+
+	@RequestMapping(params = "playerLeft",
+			method = RequestMethod.GET)
+	public @ResponseBody void playerLeft(@PathVariable String gameID) {
+
+		gameUtil.addPlayerLeft(gameID);
 	}
 
 	@RequestMapping(value = "/set",

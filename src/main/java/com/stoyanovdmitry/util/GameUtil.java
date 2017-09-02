@@ -2,6 +2,7 @@ package com.stoyanovdmitry.util;
 
 import com.stoyanovdmitry.game.Game;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.util.Map;
@@ -21,6 +22,30 @@ public class GameUtil {
 		return gameID;
 	}
 
+	public String findGame() {
+
+		for (Map.Entry<String, Game> entry : games.entrySet()) {
+			if (entry.getValue().isEmpty())
+				return entry.getKey();
+		}
+		return null;
+	}
+
+	public void addPlayerLeft(String gameID) {
+
+		getGameById(gameID).incrementPlayersLeft();
+	}
+
+	//every minute
+	@Scheduled(fixedDelay = 60000L)
+	public void clearClosedGames() {
+
+		for (Map.Entry<String, Game> entry : games.entrySet()) {
+			if (entry.getValue().getPlayersLeft() == 2)
+				games.remove(entry.getKey());
+		}
+	}
+
 	public int addPlayerToGame(String gameID) {
 		return getGameById(gameID).addPlayer();
 	}
@@ -31,5 +56,13 @@ public class GameUtil {
 
 	public Game getGameById(String gameID) {
 		return games.get(gameID);
+	}
+
+	public Map<String, Game> getGames() {
+		return games;
+	}
+
+	public void setGames(Map<String, Game> games) {
+		this.games = games;
 	}
 }

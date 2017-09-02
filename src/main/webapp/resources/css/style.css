@@ -35,7 +35,7 @@ body {
     color: #3d3d3d;
 }
 .grid .space .figure.red {
-    color: #bf4141;
+    color: #b61f1f;
 }
 
 #playerID {
@@ -44,14 +44,87 @@ body {
     color: #3d3d3d;
 }
 
-/*  X   */
-
-.x:after {
-    content: '\2715';
-    font-size: 64px;
+.desc {
+    margin-top: 45px;
+    font: 11px sans-serif;
+    max-width: 450px;
+    color: #3d3d3d;
+}
+.desc a {
+    color: #3d3d3d;
+}
+.desc a:hover {
+    color: #b61f1f;
 }
 
-.o:after {
-    content: '\25EF';
-    font-size: 54px;
+/*  X   */
+.figure {
+    width: 0;
+    height: 0;
+    /*transition: width .4s ease-in-out;*/
+    transition: all .4s cubic-bezier(0.19, 1.1, 0.79, 1.4);
+}
+
+.x {
+    /*background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' fill='#b61f1f'/></svg>")  no-repeat;;*/
+    -webkit-mask: url(/resources/svg/x.svg) no-repeat 50% 50%;
+    mask: url(/resources/svg/x.svg) no-repeat 50% 50%;
+    background-color: #3d3d3d;
+
+    width: 64px;
+    height: 64px;
+}
+
+.o {
+    -webkit-mask: url(/resources/svg/o.svg) no-repeat 50% 50%;
+    mask: url(/resources/svg/o.svg) no-repeat 50% 50%;
+    background-color: #3d3d3d;
+
+    width: 69px;
+    height: 69px;
+}
+.red {
+    background-color: #b61f1f;
+
+    animation: pulse;
+}
+
+/*home*/
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttons .button {
+    font: 16px sans-serif;
+    color: #3d3d3d;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    background: darkseagreen;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 2px solid #d3d3d3;
+}
+
+.buttons .find-button {
+    background: lightblue;
+}
+
+.buttons .button:hover {
+    opacity: .8;
+}
+.buttons .button:hover:active {
+    box-shadow: 0 5px 10px 0 inset;
+}
+.buttons .error {
+    font: 12px sans-serif;
+    color: #b61f1f;
+    width: 220px;
+    text-align: center;
 }
